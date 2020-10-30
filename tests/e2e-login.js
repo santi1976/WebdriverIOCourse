@@ -1,32 +1,27 @@
-import App from '../page-objects/app'
+import App from '../page-objects/App'
+import LoginPage from '../page-objects/pages/LoginPage'
 
 describe('E2e login logout', function(){
     it('should not login with invalid credentials', function(){
         App.openHomePage()
         $('#signin_button').waitForExist() 
-        $('#signin_button').click()
-        $('#login_form').waitForExist()
-        $('#user_login').setValue('invalid')
-        $('#user_password').setValue('invalid')
-        $('input[type="submit"]').click()
+        $('#signin_button').click()     
+        LoginPage.formIsVisible()
+        LoginPage.fillForm('invalid username', 'invalid password')
+        LoginPage.submitForm()
+        LoginPage.pauseLong() // from LoginPage which take pause method from Base
         const error = $('.alert-error')
         expect(error).toHaveTextContaining('password are wrong.')
-
-
-
     }) 
  
-     it('browser login OK', function(){
+     it('browser login with Valid Credentials', function(){
         App.openHomePage()
         $('#signin_button').waitForExist() 
         $('#signin_button').click()
-        $('#login_form').waitForExist()
-        $('#user_login').setValue('username')
-        $('#user_password').setValue('password')
-        $('input[type="submit"]').click()
-        $('.icon-user').waitForExist()
-
-
+        LoginPage.formIsVisible()
+        LoginPage.fillForm('username', 'password')
+        LoginPage.submitForm()
+        $('.nav-tabs').waitForExist()
 
     })
 
@@ -36,8 +31,6 @@ describe('E2e login logout', function(){
         $('#logout_link').waitForExist()
         $('#logout_link').click()
         $('#signin_button').waitForExist()
-
-
         
     })  
 })
