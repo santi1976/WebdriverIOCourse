@@ -18,6 +18,10 @@ class LoginPage extends Base{ // means also includes methods from Base see Base 
         return $('input[type="submit"]')
     }
 
+    get error(){
+        return $('.alert-error')
+    }
+
     //create functions based on previous selector
     formIsVisible() {
         this.loginForm.waitForExist()
