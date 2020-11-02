@@ -5,8 +5,16 @@ class Navbar extends Base {
         return $('#signin_button')
     }
 
+    get settingsButton(){
+        return $('.icon-cog')
+    }
+
     get insideNavbar(){
         return $('.nav-tabs')
+    }
+
+    get helpButton(){
+        return $('#help_link')
     }
 
     clickSignIn(){
@@ -14,6 +22,17 @@ class Navbar extends Base {
         this.signInButton.click()
     }
 
+    clickSettings(){
+        this.settingsButton.waitForExist()
+        this.settingsButton.click()
+    }
+
+    clickHelp(){
+        this.helpButton.waitForExist()
+        this.helpButton.click()
+    }
+
+ 
     insideNavbarIsVisible(){
         this.insideNavbar.waitForExist()
     }

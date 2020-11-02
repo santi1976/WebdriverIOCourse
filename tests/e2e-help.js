@@ -1,5 +1,6 @@
 import App from '../page-objects/App'
 import Navbar from '../page-objects/components/Navbar'
+import HelpPage from '../page-objects/pages/HelpPage'
 import LoginPage from '../page-objects/pages/LoginPage.js'
 
 describe('E2E test - Login', function(){
@@ -11,14 +12,13 @@ describe('E2E test - Login', function(){
     })
 
     it('should load help content...', () => {
-        $('.icon-cog').click()
-        $('#help_link').waitForClickable()
-        $('#help_link').click()
-        const title = $('.span8 > h3')
+        Navbar.clickSettings()
+        Navbar.clickHelp()
+        const title = HelpPage.title
         expect(title).toHaveText('How do I log into my account?')  
-        $('*=transfer funds').click()
+        HelpPage.clickOnTransferFunds()
         expect(title).toHaveText('How do I transfer funds?')
-        $('*=I pay bills').click()
+        HelpPage.clickOnPayBills()
         expect(title).toHaveText('How do I pay bills?')
 
 
