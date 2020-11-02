@@ -4,6 +4,11 @@ class App {
 
     }
 
+    openLoginPage(){
+        browser.url('http://zero.webappsecurity.com/login.html')
+
+    }
+
     logout(){
         browser.url('http://zero.webappsecurity.com/logout.html') //same as url above, but change "index" to "logout"
     }

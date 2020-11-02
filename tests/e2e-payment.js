@@ -1,13 +1,12 @@
+import App from '../page-objects/App'
+import Navbar from '../page-objects/components/Navbar'
+import LoginPage from '../page-objects/pages/LoginPage.js'
+
 describe('E2E test - Currency Exchange', function(){
     it('Should login app', function(){
-        browser.url('http://zero.webappsecurity.com/index.html')
-        $('#signin_button').waitForExist() 
-        $('#signin_button').click()
-        $('#login_form').waitForExist()
-        $('#user_login').setValue('username')
-        $('#user_password').setValue('password')
-        $('input[type="submit"]').click()
-        $('.icon-user').waitForExist()
+        App.openLoginPage()
+        LoginPage.login('username', 'password')
+        Navbar.insideNavbarIsVisible()
     })
 
     it('should make payment...', () => {      
