@@ -9,6 +9,10 @@ class App {
 
     }
 
+    openFeedbackPage(){
+        browser.url('http://zero.webappsecurity.com/feedback.html')
+    }
+
     logout(){
         browser.url('http://zero.webappsecurity.com/logout.html') //same as url above, but change "index" to "logout"
     }
