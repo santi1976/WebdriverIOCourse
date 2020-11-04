@@ -1,17 +1,16 @@
-import { short, medium, long} from '../tests/lib/timeouts'
+import App from '../page-objects/App'
+import Navbar from '../page-objects/components/Navbar'
+import LoginPage from '../page-objects/pages/LoginPage'
+
 
 describe('E2E - Search', function(){
     it('Should load homepage', function(){
-        browser.url('http://zero.webappsecurity.com/index.html')
-        $('#searchTerm').waitForExist()
-
+        App.openHomePage()
     }) 
 
     it('Should submit searchbox', function(){
-        $('#searchTerm').setValue('bank')
-        browser.keys('Enter')
-        const results =  $('h2')
-        expect(results).toHaveTextContaining('Results')
-        
+        Navbar.search('bank')
+        const results = LoginPage.expectedResult
+        expect(results).toHaveText('Search Results:')  
     }) 
 })
