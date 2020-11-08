@@ -5,6 +5,8 @@ class Navbar extends Base {
         return $('#signin_button')
     }
 
+
+
     get settingsButton(){
         return $('.icon-cog')
     }
@@ -50,6 +52,9 @@ class Navbar extends Base {
     signInButtonIsVisible(){
         this.signInButton.waitForExist() //we reuse the signinButton function already made
     }
+
+
+
 }
 
 export default new Navbar

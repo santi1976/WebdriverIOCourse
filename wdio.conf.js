@@ -18,7 +18,7 @@ exports.config = {
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
-    specs: ['./tests/e2e-findTransactions.js'],
+    specs: ['./tests/e2e-payment.js'],
     // Patterns to exclude.
     exclude: [],
 
@@ -184,8 +184,9 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+     before: function (capabilities, specs) {
+        browser.setWindowSize(1920, 1080);
+     },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
