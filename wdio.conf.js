@@ -1,5 +1,6 @@
 //import * as config from './lib/config'
 
+const { browser } = require('./lib/config')
 const config = require('./lib/config')
 
 exports.config = {
@@ -189,7 +190,48 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
      before: function (capabilities, specs) {
-        browser.setWindowSize(1920, 1080);
+        require('@babel/register')
+        
+        browser.addCommand('getMetadata', function(){
+            return {
+                url: this.getUrl(),
+                title: this.getTitle(),
+            }
+        })
+         
+/*         browser.addCommand('waitAndClick',function(selector){
+            try{
+                $(selector).waitForExist(),
+                $(selector).click()
+            } catch(error) {
+               throw new Error(`could not click on Selector ${selector}`) 
+            }
+        },true) */
+
+        browser.addCommand('waitAndClick', function(selector){
+            var el = $(selector)
+            el.waitForExist(),
+            el.click()
+        },true);
+
+/*          browser.addCommand('waitAndTypeText', function(selector, text){
+            try {
+                $(selector).waitForExist()
+                $(selector).setValue(text)
+            } catch(error) {
+                throw new Error(`Could not type text into selector: ${selector}`)
+            }
+        },true); 
+
+ */
+        browser.addCommand('waitAndTypeText', function(selector, text){
+            var el = $(selector)
+            el.waitForExist(selector),
+            el.setValue(text)
+        },);
+
+
+
      },
     /**
      * Runs before a WebdriverIO command gets executed.

@@ -11,7 +11,8 @@ describe('E2E test - Currency Exchange', function(){
         Navbar.insideNavbarIsVisible()
     })
 
-    it('should make payment...', () => {      
+    it('should make payment...', () => {   
+        browser.setWindowSize(1920, 1080)   
         //$('#pay_bills_tab').click() 
         InsideNavbar.clickPayBillsTab()   
         //$('#sp_payee').waitForExist() 
