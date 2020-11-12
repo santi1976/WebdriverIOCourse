@@ -5,6 +5,7 @@ import { browser } from '../lib/config'
 
 
 
+
  describe('E2e login logout', function(){
       it('should not login with invalid credentials', function(){
         App.openHomePage()
@@ -20,12 +21,13 @@ import { browser } from '../lib/config'
      it('browser login with Valid Credentials', function(){
         App.openHomePage()
         Navbar.clickSignIn()
-               
+
         LoginPage.formIsVisible()
         LoginPage.fillForm('username', 'password')
         //browser.waitAndClick('.btn-primary')
         //browser.waitAndTypeText('#user_login', 'username')
         //browser.waitAndTypeText('#user_password', 'password')
+        //browser.waitAndClick('.btn-primary')
         LoginPage.submitForm()
         Navbar.insideNavbarIsVisible()
 

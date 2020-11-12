@@ -23,7 +23,7 @@ exports.config = {
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
-    specs: ['./tests/**.js'],
+    specs: ['./tests/e2e-login.js'],
     // Patterns to exclude.
     exclude: [],
 
@@ -192,43 +192,34 @@ exports.config = {
      before: function (capabilities, specs) {
         require('@babel/register')
         
-        browser.addCommand('getMetadata', function(){
+/*         browser.addCommand('getMetadata', function(){
             return {
                 url: this.getUrl(),
                 title: this.getTitle(),
             }
         })
          
-/*         browser.addCommand('waitAndClick',function(selector){
-            try{
+           browser.addCommand('waitAndClick',function(selector){
+            try {
                 $(selector).waitForExist(),
                 $(selector).click()
             } catch(error) {
                throw new Error(`could not click on Selector ${selector}`) 
             }
-        },true) */
+        })
 
-        browser.addCommand('waitAndClick', function(selector){
-            var el = $(selector)
-            el.waitForExist(),
-            el.click()
-        },true);
 
-/*          browser.addCommand('waitAndTypeText', function(selector, text){
+
+/          browser.addCommand('waitAndTypeText', function(selector, text){
             try {
                 $(selector).waitForExist()
                 $(selector).setValue(text)
             } catch(error) {
                 throw new Error(`Could not type text into selector: ${selector}`)
             }
-        },true); 
+        }) */
 
- */
-        browser.addCommand('waitAndTypeText', function(selector, text){
-            var el = $(selector)
-            el.waitForExist(selector),
-            el.setValue(text)
-        },);
+ 
 
 
 
