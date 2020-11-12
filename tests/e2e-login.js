@@ -24,7 +24,7 @@ import { browser } from '../lib/config'
 
         LoginPage.formIsVisible()
         LoginPage.fillForm('username', 'password')
-        //browser.waitAndClick('.btn-primary')
+        //browser.waitAndClick('.btn-primary') // browser. didn't work for several errors. Decided to skip lessons 47-48-49
         //browser.waitAndTypeText('#user_login', 'username')
         //browser.waitAndTypeText('#user_password', 'password')
         //browser.waitAndClick('.btn-primary')
