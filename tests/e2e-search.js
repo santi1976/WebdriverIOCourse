@@ -13,7 +13,7 @@ describe('E2E - Search', function(){
     }) 
 
     it('Should submit searchbox', function(){
-        Navbar.search('bank')
+        Navbar.search(dataHelper.getRandomName())
         const results = LoginPage.expectedResult
         expect(results).toHaveText('Search Results:')  
         browser.pause(5000)

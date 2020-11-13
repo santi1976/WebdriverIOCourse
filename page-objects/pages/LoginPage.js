@@ -1,4 +1,6 @@
 import Base from '../Base'
+const your_username = process.env.YOUR_USERNAME;
+const your_password=  process.env.YOUR_PASSWORD;
 
 class LoginPage extends Base{ // means also includes methods from Base see Base and e2e-login line 12
     //storing selectors
@@ -34,19 +36,19 @@ class LoginPage extends Base{ // means also includes methods from Base see Base 
     }
 
     //Note that username is actually the username and same with password
-    fillForm(username, password){
-        this.usernameInput.setValue(username)
-        this.passwordInput.setValue(password)
+    fillForm(your_username, your_password){
+        this.usernameInput.setValue(your_username)
+        this.passwordInput.setValue(your_password)
     }
 
     submitForm(){
         this.submitButton.click()
     }
 
-    login(username, password) {
+    login(your_username, your_password) {
         this.loginForm.waitForExist()
-        this.usernameInput.setValue(username)
-        this.passwordInput.setValue(password)
+        this.usernameInput.setValue(your_username)
+        this.passwordInput.setValue(your_password)
         this.submitButton.click()
 
     }

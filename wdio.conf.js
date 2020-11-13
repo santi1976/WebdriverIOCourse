@@ -192,7 +192,7 @@ exports.config = {
      before: function (capabilities, specs) {
         require('@babel/register')
         
-/*         browser.addCommand('getMetadata', function(){
+/         browser.addCommand('getMetadata', function(){
             return {
                 url: this.getUrl(),
                 title: this.getTitle(),
@@ -210,14 +210,14 @@ exports.config = {
 
 
 
-/          browser.addCommand('waitAndTypeText', function(selector, text){
+          browser.addCommand('waitAndTypeText', function(selector, text){
             try {
                 $(selector).waitForExist()
                 $(selector).setValue(text)
             } catch(error) {
                 throw new Error(`Could not type text into selector: ${selector}`)
             }
-        }) */
+        }) 
 
  
 
@@ -240,8 +240,9 @@ exports.config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    // beforeTest: function (test, context) {
-    // },
+     //beforeTest: function (test, context) {
+         
+     //},
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
      * beforeEach in Mocha)

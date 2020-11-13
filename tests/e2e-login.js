@@ -2,6 +2,7 @@ import App from '../page-objects/App'
 import LoginPage from '../page-objects/pages/LoginPage'
 import Navbar from '../page-objects/components/Navbar'
 import { browser } from '../lib/config'
+import dataHelpers, { getRandomName } from '../lib/data-helpers'
 
 
 
@@ -11,7 +12,7 @@ import { browser } from '../lib/config'
         App.openHomePage()
         Navbar.clickSignIn()
         LoginPage.formIsVisible()
-        LoginPage.fillForm('invalid username', 'invalid password')
+        LoginPage.fillForm(dataHelpers.getRandomName, dataHelpers.getRandomId) //we can use whatever we want from dataHelpers since we have to pass invalidad information. 
         LoginPage.submitForm()
     //  LoginPage.pauseLong() // from LoginPage which take pause method from Base
         const alert = LoginPage.error
@@ -21,7 +22,6 @@ import { browser } from '../lib/config'
      it('browser login with Valid Credentials', function(){
         App.openHomePage()
         Navbar.clickSignIn()
-
         LoginPage.formIsVisible()
         LoginPage.fillForm('username', 'password')
         //browser.waitAndClick('.btn-primary') // browser. didn't work for several errors. Decided to skip lessons 47-48-49
