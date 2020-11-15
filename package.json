@@ -4,7 +4,8 @@
   "description": "Curso de WebdriverIO",
   "main": "index.js",
   "scripts": {
-    "test": "wdio wdio.conf.js"
+    "test": "wdio wdio.conf.js",
+    "smoke-test": "your script here"
   },
   "keywords": [
     "Automation",
