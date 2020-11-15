@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "wdio wdio.conf.js",
-    "smoke-test": "your script here"
+    "start-jenkins-server":"java -jar jenkins.war -httpsPort=8080 --enable-future-java"
+    
   },
   "keywords": [
     "Automation",
