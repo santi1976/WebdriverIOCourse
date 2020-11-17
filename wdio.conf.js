@@ -4,8 +4,13 @@ const { browser } = require('./lib/config')
 const config = require('./lib/config')
 
 exports.config = {
+    // Crossbrowsertesting Service Config
+    user: 'sriveira@worldsys.com.ar',
+    key: 'u206a34b5611cf53',
+    hostname: 'hub.crossbrowsertesting.com',
+    port: 80,
+    path: '/wd/hub',
 
-    
     //
     // ====================
     // Runner Configuration
@@ -51,19 +56,38 @@ exports.config = {
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
     capabilities: [{
+
+  
+
+        name: 'WDIO Selenium Test Example',
+        platform: 'Windows 10',
+        record_video: 'true',
+  
     
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
+        maxInstances: 1,
         //
-        browserName: config.browser,
+        browserName: 'chrome',
         //acceptInsecureCerts: true
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    }, 
+    {
+        name: 'WDIO Selenium Firefox',
+        platform: 'Windows 7',
+        record_video: 'true',
+        maxInstances: 1,
+        //
+        browserName: 'firefox',
+
+    }
+
+
+],
     //
     // ===================
     // Test Configurations
@@ -111,7 +135,18 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+
+
+    services: [
+        ['crossbrowsertesting', {
+            cbtTunnel: false,
+            cbtTunnelOpts: {
+                // any additional options from cbt_tunnels
+            },
+        }]
+    ],
+
+
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -134,7 +169,7 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
     reporters: ['spec'],
-    port: 4444,
+   
 
 
     
@@ -192,7 +227,7 @@ exports.config = {
      before: function (capabilities, specs) {
         require('@babel/register')
         
-/         browser.addCommand('getMetadata', function(){
+/*          browser.addCommand('getMetadata', function(){
             return {
                 url: this.getUrl(),
                 title: this.getTitle(),
@@ -206,18 +241,18 @@ exports.config = {
             } catch(error) {
                throw new Error(`could not click on Selector ${selector}`) 
             }
-        })
+        }) */
 
 
 
-          browser.addCommand('waitAndTypeText', function(selector, text){
+/*           browser.addCommand('waitAndTypeText', function(selector, text){
             try {
                 $(selector).waitForExist()
                 $(selector).setValue(text)
             } catch(error) {
                 throw new Error(`Could not type text into selector: ${selector}`)
             }
-        }) 
+        })  */
 
  
 
