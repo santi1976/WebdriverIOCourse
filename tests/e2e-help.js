@@ -1,3 +1,4 @@
+//import { browser } from '../lib/config'
 import App from '../page-objects/App'
 import Navbar from '../page-objects/components/Navbar'
 import HelpPage from '../page-objects/pages/HelpPage'
@@ -15,9 +16,11 @@ describe('E2E test - Login', function(){
         Navbar.clickSettings()
         Navbar.clickHelp()
         const title = HelpPage.title
-        expect(title).toHaveText('How do I log into my account?')  
+        expect(title).toHaveText('How do I log into my account?')
+        browser.pause(1000)  
         HelpPage.clickOnTransferFunds()
         expect(title).toHaveText('How do I transfer funds?')
+        browser.pause(1000)  
         HelpPage.clickOnPayBills()
         expect(title).toHaveText('How do I pay bills?')
 

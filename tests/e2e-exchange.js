@@ -1,5 +1,5 @@
 
-//import { browser } from '../lib/config'
+
 import App from '../page-objects/App'
 import InsideNavbar from '../page-objects/components/InsideNavbar'
 import Navbar from '../page-objects/components/Navbar'
@@ -33,7 +33,7 @@ describe('E2E test - Currency Exchange', function(){
         Exchange.selectPayInDollars()
 /*      $('#purchase_cash').click()*/
         Exchange.clickToPurchase()
-        browser.pause(3000)
+        browser.pause(2000)
 /*      const success = $('#alert_content')
         expect(success).toHaveText('successfully purchased.')   */
         const success = Exchange.alertMessage
